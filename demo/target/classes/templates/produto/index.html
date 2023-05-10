@@ -7,28 +7,26 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
-            <a th:href="@{/cliente/novo}"
+            <a th:href="@{/produto/novo}"
                 class="btn btn-primary">Novo</a>
-            <table class="table" id="tabclientes">
+            <table class="table" id="tabprodutos">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="umCliente : ${listaClientes}">
-                        <td th:text="${umCliente.nome}"></td>
-                        <td th:text="${umCliente.endereco}"></td>
-                        <td th:text="${umCliente.telefone}"></td>
-                        <td th:text="${umCliente.email}"></td>
+                    <tr th:each="umProduto : ${listaProdutos}">
+                        <td th:text="${umProduto.nome}"></td>
+                        <td th:text="${umProduto.descricao}"></td>
+                        <td th:text="${umProduto.valor}"></td>
                         <td><a class="btn btn-secondary"
-                            th:href="@{'/cliente/alterar/' + ${umCliente.id }}">Alterar</a>
+                            th:href="@{'/produto/alterar/' + ${umProduto.id }}">Alterar</a>
                             <button class="btn btn-danger js-delete"
-                                th:data-id="${umCliente.id}">
+                                th:data-id="${umProduto.id}">
                                 Excluir
                             </button>
                         </td>
@@ -37,15 +35,15 @@
             </table>
         </main>
 
-        <div class="modal" tabindex="-1" id="modalcliente">
+        <div class="modal" tabindex="-1" id="modalproduto">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Excluir cliente</h5>
+                  <h5 class="modal-title">Excluir produto</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>Confirma a exclusão do cliente?</p>
+                  <p>Confirma a exclusão do produto?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
