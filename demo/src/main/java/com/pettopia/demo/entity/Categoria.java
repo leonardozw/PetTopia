@@ -1,9 +1,13 @@
 package com.pettopia.demo.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria {
@@ -11,6 +15,10 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @OneToMany(mappedBy = "categoria")
+    private Set<Produto> produtos =  new HashSet<>();
+
     
     public Categoria() {
     }
