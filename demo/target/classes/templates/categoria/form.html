@@ -7,6 +7,7 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
+            <br>
             <form th:action="@{/categoria/(form)}"
                 method="POST"
                 th:object="${categoria}">
@@ -18,8 +19,9 @@
                     <input type="text" class="form-control"
                         th:field="*{nome}" id="txtNome">
                 </div>
+                <br>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-secondary btn-lg">
                         Enviar
                     </button>
                 </div>
