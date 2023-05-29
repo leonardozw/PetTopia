@@ -19,6 +19,12 @@ public class CategoriaServiceImpl
     public List<Categoria> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Categoria> pesquisarCategorias(String pesquisa){
+        return repository.findByNomeContainingIgnoreCase(pesquisa);
+    }
+
     @Override
     public void save(Categoria categoria) {
         repository.save(categoria);

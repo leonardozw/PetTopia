@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Produto {
@@ -16,7 +19,11 @@ public class Produto {
     @Column(length = 600)
     private String descricao;
     private Double valor;
-    
+
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
+    private Categoria categoria;
+
     public Produto() {
     }
 
@@ -57,5 +64,13 @@ public class Produto {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

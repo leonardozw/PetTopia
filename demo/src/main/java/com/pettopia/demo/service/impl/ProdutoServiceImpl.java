@@ -19,6 +19,12 @@ public class ProdutoServiceImpl
     public List<Produto> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Produto> pesquisarProdutos(String pesquisa){
+        return repository.findByNomeContainingIgnoreCase(pesquisa);
+    }
+
     @Override
     public void save(Produto produto) {
         repository.save(produto);

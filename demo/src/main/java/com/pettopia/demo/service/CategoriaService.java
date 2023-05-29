@@ -9,5 +9,7 @@ public interface CategoriaService {
 
     void save(Categoria categoria);
 
+    List<Categoria> pesquisarCategorias(String pesquisa);
+
     void delete(long id);
 }

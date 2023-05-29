@@ -1,7 +1,6 @@
 package com.pettopia.demo.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +16,8 @@ public class Categoria {
     private String nome;
 
     @OneToMany(mappedBy = "categoria")
-    private Set<Produto> produtos =  new HashSet<>();
+    private List<Produto> produtos;;
 
-    
     public Categoria() {
     }
 

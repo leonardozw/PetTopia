@@ -9,5 +9,7 @@ public interface ProdutoService {
 
     void save(Produto produto);
 
+    List<Produto> pesquisarProdutos(String pesquisa);
+
     void delete(long id);
 }

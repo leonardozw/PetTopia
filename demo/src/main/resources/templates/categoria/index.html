@@ -7,10 +7,14 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
-            <br>
-            <a th:href="@{/categoria/novo}"
-            class="btn btn-secondary btn-lg">Novo</a>
-            <br>
+          <br>
+          <div class="form-group">
+            <label for="pesquisaCategoria">Pesquisar Categoria:</label>
+            <input type="text" class="form-control" id="pesquisaCategoria" name="pesquisaCategoria" onkeyup="filtrarCategoria()">
+          </div>
+          <br>
+          <a th:href="@{/categoria/novo}" class="btn btn-secondary btn-lg">Novo</a>
+          <br>
             <table class="table" id="tabcategorias">
                 <thead>
                     <tr>

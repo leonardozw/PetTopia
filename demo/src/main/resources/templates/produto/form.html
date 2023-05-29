@@ -29,6 +29,12 @@
                     <input type="text" class="form-control"
                         th:field="*{valor}" id="txtValor">
                 </div>
+                <div class="form-group">
+                    <label for="selectCategoria">Categoria</label>
+                    <select class="form-control" id="selectCategoria" th:field="*{categoria}">
+                        <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+                    </select>
+                </div> 
                 <br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-secondary btn-lg">

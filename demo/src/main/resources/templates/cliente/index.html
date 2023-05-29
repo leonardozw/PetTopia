@@ -8,6 +8,11 @@
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
           <br>
+          <div class="form-group">
+            <label for="pesquisaCliente">Pesquisar Cliente:</label>
+            <input type="text" class="form-control" id="pesquisaCliente" name="pesquisaCliente" onkeyup="filtrarCliente()">
+          </div>
+          <br>
           <a th:href="@{/cliente/novo}" class="btn btn-secondary btn-lg">Novo</a>
           <br>
             <table class="table" id="tabclientes">

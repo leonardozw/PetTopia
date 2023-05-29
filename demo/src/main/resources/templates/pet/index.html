@@ -9,26 +9,28 @@
         <main class="container">
           <br>
           <div class="form-group">
-            <label for="pesquisaCategoria">Pesquisar Categoria:</label>
-            <input type="text" class="form-control" id="pesquisaCategoria" name="pesquisaCategoria" onkeyup="filtrarCategoria()">
+            <label for="pesquisaPet">Pesquisar Pet:</label>
+            <input type="text" class="form-control" id="pesquisaPet" name="pesquisaPet" onkeyup="filtrarPet()">
           </div>
           <br>
-          <a th:href="@{/categoria/novo}" class="btn btn-secondary btn-lg">Novo</a>
+          <a th:href="@{/pet/novo}" class="btn btn-secondary btn-lg">Novo</a>
           <br>
-            <table class="table" id="tabcategorias">
+            <table class="table" id="tabpets">
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Idade</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="umCategoria : ${listaCategorias}">
-                        <td th:text="${umCategoria.nome}"></td>
+                    <tr th:each="umPet : ${listaPets}">
+                        <td th:text="${umPet.nome}"></td>
+                        <td th:text="${umPet.idade}"></td>
                         <td><a class="btn btn-secondary"
-                            th:href="@{'/categoria/alterar/' + ${umCategoria.id }}">Alterar</a>
+                            th:href="@{'/pet/alterar/' + ${umPet.id }}">Alterar</a>
                             <button class="btn btn-danger js-delete"
-                                th:data-id="${umCategoria.id}">
+                                th:data-id="${umPet.id}">
                                 Excluir
                             </button>
                         </td>
@@ -37,15 +39,15 @@
             </table>
         </main>
 
-        <div class="modal" tabindex="-1" id="modalcategoria">
+        <div class="modal" tabindex="-1" id="modalpet">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Excluir categoria</h5>
+                  <h5 class="modal-title">Excluir pet</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>Confirma a exclusão da categoria?</p>
+                  <p>Confirma a exclusão do pet?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>

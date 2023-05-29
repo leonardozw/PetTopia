@@ -8,9 +8,9 @@
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
             <br>
-            <form th:action="@{/produto/(form)}"
+            <form th:action="@{/pet/(form)}"
                 method="POST"
-                th:object="${produto}">
+                th:object="${pet}">
 
                 <input type="hidden" th:field="*{id}">
 
@@ -20,21 +20,10 @@
                         th:field="*{nome}" id="txtNome">
                 </div>
                 <div class="form-group">
-                    <label for="txtDescricao">Descrição</label>
+                    <label for="txtIdade">idade</label>
                     <input type="text" class="form-control"
-                        th:field="*{descricao}" id="txtDescricao">
+                        th:field="*{idade}" id="txtIdade">
                 </div>
-                <div class="form-group">
-                    <label for="txtValor">Valor</label>
-                    <input type="text" class="form-control"
-                        th:field="*{valor}" id="txtValor">
-                </div>
-                <div class="form-group">
-                    <label for="selectCategoria">Categoria</label>
-                    <select class="form-control" id="selectCategoria" th:field="*{categoria}">
-                        <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
-                    </select>
-                </div> 
                 <br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-secondary btn-lg">

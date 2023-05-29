@@ -1,11 +1,14 @@
 package com.pettopia.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pettopia.demo.entity.Cliente;
@@ -29,6 +32,14 @@ public class ClienteController {
         var cliente = new Cliente();
         return new ModelAndView("cliente/form", 
                                 "cliente",cliente);
+    }
+    @GetMapping("/pesquisar")
+    public ModelAndView pesquisarClientes(@RequestParam("pesquisa") String pesquisa) {
+        List<Cliente> clientesEncontradas = clienteService.pesquisarClientes(pesquisa);
+        ModelAndView modelAndView = new ModelAndView("cliente/index");
+        modelAndView.addObject("listaClientes", clientesEncontradas);
+        modelAndView.addObject("pesquisa", pesquisa); 
+        return modelAndView;
     }
     @PostMapping(params = "form")
     public ModelAndView save(Cliente cliente){

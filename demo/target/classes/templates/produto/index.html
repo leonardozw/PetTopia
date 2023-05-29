@@ -8,6 +8,11 @@
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
             <br>
+            <div class="form-group">
+              <label for="pesquisaProduto">Pesquisar Produto:</label>
+              <input type="text" class="form-control" id="pesquisaProduto" name="pesquisaProduto" onkeyup="filtrarProdutos()">
+            </div>
+            <br>
             <a th:href="@{/produto/novo}"
             class="btn btn-secondary btn-lg">Novo</a>
             <br>
@@ -17,6 +22,7 @@
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Valor</th>
+                        <th>Categoria</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -25,12 +31,10 @@
                         <td th:text="${umProduto.nome}"></td>
                         <td th:text="${umProduto.descricao}"></td>
                         <td th:text="${umProduto.valor}"></td>
-                        <td><a class="btn btn-secondary"
-                            th:href="@{'/produto/alterar/' + ${umProduto.id }}">Alterar</a>
-                            <button class="btn btn-danger js-delete"
-                                th:data-id="${umProduto.id}">
-                                Excluir
-                            </button>
+                        <td th:text="${umProduto.categoria?.nome}"></td>
+                        <td>
+                          <a class="btn btn-secondary" th:href="@{'/produto/alterar/' + ${umProduto.id }}">Alterar</a>
+                          <button class="btn btn-danger js-delete" th:data-id="${umProduto.id}">Excluir</button>
                         </td>
                     </tr>
                 </tbody>
