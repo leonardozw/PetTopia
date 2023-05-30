@@ -9,6 +9,8 @@ public interface ClienteService {
 
     void save(Cliente cliente);
 
+    Cliente findClienteById(Long id);
+
     List<Cliente> pesquisarClientes(String pesquisa);
 
     void delete(long id);

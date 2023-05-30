@@ -25,6 +25,10 @@ public class ClienteServiceImpl
         return repository.findByNomeContainingIgnoreCase(pesquisa);
     }
     @Override
+    public Cliente findClienteById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+    @Override
     public void save(Cliente cliente) {
         repository.save(cliente);
     }

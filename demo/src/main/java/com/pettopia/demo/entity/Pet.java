@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pet {
@@ -21,6 +23,10 @@ public class Pet {
 
     @Enumerated(EnumType.STRING)
     private PorteAnimal porte;
+
+    @ManyToOne
+    @JoinColumn(name= "cliente_id")
+    private Cliente cliente;
 
     public Pet() {
     }
@@ -73,5 +79,12 @@ public class Pet {
         this.porte = porte;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
 }

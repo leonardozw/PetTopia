@@ -22,6 +22,7 @@
                         <th>Endereço</th>
                         <th>Telefone</th>
                         <th>E-mail</th>
+                        <th>Pets</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,12 +32,18 @@
                         <td th:text="${umCliente.endereco}"></td>
                         <td th:text="${umCliente.telefone}"></td>
                         <td th:text="${umCliente.email}"></td>
+                        <td>
+                          <ul>
+                            <li th:each="pet : ${umCliente.pets}" th:text="${pet.nome}"></li>
+                          </ul>
+                        </td>
                         <td><a class="btn btn-secondary"
                             th:href="@{'/cliente/alterar/' + ${umCliente.id }}">Alterar</a>
                             <button class="btn btn-danger js-delete"
                                 th:data-id="${umCliente.id}">
                                 Excluir
                             </button>
+                            <a class="btn btn-primary" th:href="@{'/cliente/pet/novo/' + ${umCliente.id }}">Adicionar Pet</a>
                         </td>
                     </tr>
                 </tbody>

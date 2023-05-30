@@ -27,13 +27,6 @@ public class PetController {
                     "listaPets",listaPets);
     }
 
-    @GetMapping("/novo")
-    public ModelAndView novo(){
-        var pet = new Pet();
-        return new ModelAndView("pet/form", 
-                                "pet",pet);
-    }
-
     @GetMapping("/pesquisar")
     public ModelAndView pesquisarPets(@RequestParam("pesquisa") String pesquisa) {
         List<Pet> petsEncontrados = petService.pesquisarPets(pesquisa);

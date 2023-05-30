@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-    <head th:include="layout :: htmlhead"></head>
+<head th:include="layout :: htmlhead"></head>
 
-    <body>
-        <nav th:replace="layout :: menu">(menu)</nav>
-        <main class="container">
+<body>
+    <nav th:replace="layout :: menu">(menu)</nav>
+    <main class="container">
+        <br>
+        <form th:action="@{/cliente/(form)}" method="POST" th:object="${cliente}">
+            <h3>Cadastro Cliente</h3>
+            <!-- Campos do Cliente -->
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="txtNome">Nome</label>
+                <input type="text" class="form-control" th:field="*{nome}" id="txtNome">
+            </div>
+            <div class="form-group">
+                <label for="txtEndereco">Endereço</label>
+                <input type="text" class="form-control" th:field="*{endereco}" id="txtEndereco">
+            </div>
+            <div class="form-group">
+                <label for="txtTelefone">Telefone</label>
+                <input type="text" class="form-control" th:field="*{telefone}" id="txtTelefone">
+            </div>
+            <div class="form-group">
+                <label for="txtEmail">E-mail</label>
+                <input type="text" class="form-control" th:field="*{email}" id="txtEmail">
+            </div>
             <br>
-            <form th:action="@{/cliente/(form)}"
-                method="POST"
-                th:object="${cliente}">
+            <h3>Cadastro de Pet</h3>
+            <div class="form-group">
+                <label for="txtNomePet">Nome</label>
+                <input type="text" class="form-control" th:field="*{pets[0].nome}" id="txtNomePet">
+            </div>
+            <div class="form-group">
+                <label for="txtIdadePet">Idade</label>
+                <input type="number" class="form-control" th:field="*{pets[0].idade}" id="txtIdadePet">
+            </div>
+            <div class="form-group">
+                <label for="selectTipoAnimal">Tipo</label>
+                <select class="form-control" th:field="*{pets[0].tipo}" id="selectTipoAnimal">
+                    <option value="CAO">Cachorro</option>
+                    <option value="GATO">Gato</option>
+                    <option value="PASSARO">Passaro</option>
+                    <option value="OUTROS">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="selectPorteAnimal">Porte</label>
+                <select class="form-control" th:field="*{pets[0].porte}" id="selectPorteAnimal">
+                    <option value="PEQUENO">Pequeno</option>
+                    <option value="MEDIO">Médio</option>
+                    <option value="GRANDE">Grande</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-secondary btn-lg">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </main>
+    <div th:include="layout :: footer">(footer)</div>
+</body>
 
-                <input type="hidden" th:field="*{id}">
-
-                <div class="form-group">
-                    <label for="txtNome">Nome</label>
-                    <input type="text" class="form-control"
-                        th:field="*{nome}" id="txtNome">
-                </div>
-                <div class="form-group">
-                    <label for="txtEndereco">Endereço</label>
-                    <input type="text" class="form-control"
-                        th:field="*{endereco}" id="txtEndereco">
-                </div>
-                <div class="form-group">
-                    <label for="txtTelefone">Telefone</label>
-                    <input type="text" class="form-control"
-                        th:field="*{telefone}" id="txtTelefone">
-                </div>
-                <div class="form-group">
-                    <label for="txtEmail">E-mail</label>
-                    <input type="text" class="form-control"
-                        th:field="*{email}" id="txtEmail">
-                </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary btn-lg">
-                        Enviar
-                    </button>
-                </div>
-
-            </form>
-        </main>
-        <div th:include="layout :: footer">(footer)</div>
-    </body>
 </html>

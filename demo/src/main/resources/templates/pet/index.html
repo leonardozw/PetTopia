@@ -13,13 +13,14 @@
             <input type="text" class="form-control" id="pesquisaPet" name="pesquisaPet" onkeyup="filtrarPet()">
           </div>
           <br>
-          <a th:href="@{/pet/novo}" class="btn btn-secondary btn-lg">Novo</a>
-          <br>
             <table class="table" id="tabpets">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Idade</th>
+                        <th>Tipo</th>
+                        <th>Porte</th>
+                        <th>Dono</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -27,6 +28,9 @@
                     <tr th:each="umPet : ${listaPets}">
                         <td th:text="${umPet.nome}"></td>
                         <td th:text="${umPet.idade}"></td>
+                        <td th:text="${umPet.tipo}"></td>
+                        <td th:text="${umPet.porte}"></td>
+                        <td th:text="${umPet.cliente.nome}"></td>
                         <td><a class="btn btn-secondary"
                             th:href="@{'/pet/alterar/' + ${umPet.id }}">Alterar</a>
                             <button class="btn btn-danger js-delete"
