@@ -17,7 +17,7 @@ import com.pettopia.demo.entity.Pet;
 import com.pettopia.demo.service.ClienteService;
 
 @Controller
-@RequestMapping("/cliente")
+@RequestMapping("/clienteAdmin")
 public class ClienteController {
     
     @Autowired
@@ -86,12 +86,6 @@ public class ClienteController {
         cli.getPets().add(pet);
         pet.setCliente(cli);
         clienteService.save(cli);
-
-        /*Pet novoPet = cliente.getPets().get(0); 
-    
-        novoPet.setCliente(cliente);
-    
-        clienteService.save(cliente);*/
     
         return new ModelAndView("redirect:/cliente");
     }

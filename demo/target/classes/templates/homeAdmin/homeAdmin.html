@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    lang="en">
+
+    <head th:include="layoutAdmin :: htmlhead"></head>
+
+    <body>
+        <nav th:replace="layoutAdmin :: menu">(menu)</nav>      
+        <div th:include="layoutAdmin :: footer">(footer)</div>
+        <script th:src="@{/script.js}"></script>
+    </body>
+</html>

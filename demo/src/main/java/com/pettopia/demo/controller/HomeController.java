@@ -1,7 +1,5 @@
 package com.pettopia.demo.controller;
 
-import java.util.HashMap;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,4 +13,5 @@ public class HomeController {
     public ModelAndView index(){
         return new ModelAndView("home/index");
     }
+
 }

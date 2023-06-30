@@ -15,7 +15,7 @@ import com.pettopia.demo.entity.Categoria;
 import com.pettopia.demo.service.CategoriaService;
 
 @Controller
-@RequestMapping("/categoria")
+@RequestMapping("/categoriaAdmin")
 public class CategoriaController {
 
     @Autowired

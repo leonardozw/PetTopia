@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="layout :: htmlhead"></head>
+<head th:include="layoutAdmin :: htmlhead"></head>
 
 <body>
-    <nav th:replace="layout :: menu">(menu)</nav>
+    <nav th:replace="layoutAdmin :: menu">(menu)</nav>
     <main class="container">
         <br>
         <h1>Cadastro de Pet</h1>
@@ -47,7 +47,7 @@
         </form>
     </main>
 
-    <div th:include="layout :: footer">(footer)</div>
+    <div th:include="layoutAdmin :: footer">(footer)</div>
     <script th:src="@{/script.js}"></script>
 </body>
 
