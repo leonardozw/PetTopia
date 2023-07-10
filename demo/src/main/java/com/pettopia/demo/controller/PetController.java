@@ -15,7 +15,7 @@ import com.pettopia.demo.entity.Pet;
 import com.pettopia.demo.service.PetService;
 
 @Controller
-@RequestMapping("/petAdmin")
+@RequestMapping("/pet")
 public class PetController {
     @Autowired
     private PetService petService;

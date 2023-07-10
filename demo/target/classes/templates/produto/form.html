@@ -10,7 +10,8 @@
             <br>
             <form th:action="@{/produto/(form)}"
                 method="POST"
-                th:object="${produto}">
+                th:object="${produto}"
+                enctype="multipart/form-data">
 
                 <input type="hidden" th:field="*{id}">
 
@@ -34,6 +35,16 @@
                     <select class="form-control" id="selectCategoria" th:field="*{categoria}">
                         <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <div class="col-6">
+                        <img th:if="*{foto}" th:src="@{'/produto/image/'+*{id}}" style="width: 100px; height: 100px;">
+                    </div>
+
+                    <div class="col-6">
+                        <label>Foto:</label>
+                        <input type="file" name="file" class="form-control">
+                    </div>
                 </div> 
                 <br>
                 <div class="form-group">

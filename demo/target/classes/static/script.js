@@ -68,13 +68,10 @@
     });
 
     function filtrarProdutos() {
-        // Obter o valor do campo de pesquisa
         var pesquisa = document.getElementById("pesquisaProduto").value.toLowerCase();
         
-        // Obter todas as linhas da tabela de produtos
         var linhasProdutos = document.querySelectorAll("#tabprodutos tbody tr");
     
-        // Iterar sobre as linhas da tabela e ocultar/mostrar com base na pesquisa
         for (var i = 0; i < linhasProdutos.length; i++) {
             var nomeProduto = linhasProdutos[i].querySelector("td:first-child").textContent.toLowerCase();
             
@@ -132,8 +129,42 @@
         }
     }
 
+    function filterByHigherPrice() {
+        var filtro = "maiorPreco"; // Defina o filtro para maior preço
+        $.ajax({
+            url: '/produto/filtrar',
+            type: 'GET',
+            data: { filtro: filtro },
+            success: function(response) {
+                $('#productsContainer').html(response); // Atualize o container de produtos com a resposta
+            },
+            error: function(xhr, status, error) {
+                // Manipule os erros aqui, se necessário
+            }
+        });
+    }
+    
+    function filterByLowerPrice() {
+        var filtro = "menorPreco"; // Defina o filtro para menor preço
+        $.ajax({
+            url: '/produto/filtrar',
+            type: 'GET',
+            data: { filtro: filtro },
+            success: function(response) {
+                console.log(response)
+                $('#productsContainer').html(response); // Atualize o container de produtos com a resposta
+            },
+            error: function(xhr, status, error) {
+                // Manipule os erros aqui, se necessário
+            }
+        });
+    }
+    
+
     window.filtrarPet = filtrarPet;
     window.filtrarCliente = filtrarCliente;
     window.filtrarCategoria = filtrarCategoria;
     window.filtrarProdutos = filtrarProdutos;
+    window.filterByHigherPrice = filterByHigherPrice;
+    window.filterByLowerPrice = filterByLowerPrice;
 })();

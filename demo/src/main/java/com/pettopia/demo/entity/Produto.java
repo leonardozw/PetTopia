@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Entity
 public class Produto {
@@ -19,6 +21,7 @@ public class Produto {
     @Column(length = 600)
     private String descricao;
     private Double valor;
+    private String foto;
 
     @ManyToOne
     @JoinColumn(name="categoria_id")
@@ -72,5 +75,13 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

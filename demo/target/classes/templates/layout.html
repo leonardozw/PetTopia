@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="htmlhead">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.13.2/jquery-ui.css}" />
-        <link rel="stylesheet" th:href="@{/site.css}" />
-    </head>
-    <body> 
-        <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" th:href="@{/}">&nbspPetTopia</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" th:href="@{/home/index}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" th:href="@{/home/produtos}">Produtos</a>
-                </li>
-              </ul>
-            </div>
-        </nav>
-        <div th:fragment="footer" id="footer">
-            <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-            <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
-        </div>
-    </body>
+
+<head th:fragment="htmlhead">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+  <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.13.2/jquery-ui.css}" />
+  <link rel="stylesheet" th:href="@{/site.css}" />
+</head>
+
+<body>
+  <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#!">Pettopia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+          <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/produtos}">Produto</a></li>
+        </ul>
+        <form class="d-flex">
+          <a href="#" class="btn btn-outline-dark" type="submit">
+            <i class="bi-cart-fill me-1"></i>
+            Carrinho
+            <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+          </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div th:fragment="footer" id="footer">
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+  </div>
+</body>
+
 </html>
