@@ -21,11 +21,11 @@ public class HomeController {
 
     @GetMapping
     public ModelAndView index() {
-        var listarCategorias = categoriaService.getAll();
+        var listaCategorias = categoriaService.getAll();
         var listaProdutos = produtoService.getAll();
         ModelAndView modelAndView = new ModelAndView("home/index");
         modelAndView.addObject("listaProdutos", listaProdutos);
-        modelAndView.addObject("listarCategorias", listarCategorias);
+        modelAndView.addObject("listaCategorias", listaCategorias);
     
         return modelAndView;
     }

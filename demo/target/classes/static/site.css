@@ -92,19 +92,6 @@
     overflow-y: auto;
 }
 
-.dropdown-toggle {
-    background-color: red;
-    color: white;
-}
-
-.dropdown-menu {
-    background-color: red;
-}
-
-.dropdown-item {
-    color: white;
-}
-
 .card {
     border: none;
     border-radius: 10px;
