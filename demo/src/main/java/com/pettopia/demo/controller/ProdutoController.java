@@ -46,6 +46,18 @@ public class ProdutoController {
                 "listaProdutos", listaProdutos);
     }
 
+    @GetMapping("/detalhes")
+    public ModelAndView produtoDetalhes() {
+        ;
+        return new ModelAndView("produto/detalhes");
+    }
+
+    @GetMapping("/detalhes/{id}")
+    public ModelAndView exibirDetalhesProduto(@PathVariable("id") Long id) {
+        Produto produto = produtoService.buscarProdutoPorId(id);
+        return new ModelAndView("produto/detalhes", "produto", produto);
+    }
+
     @GetMapping("/produto/{id}")
     public String exibirDetalhesProduto(@PathVariable("id") Long id, Model model) {
         Produto produto = produtoService.buscarProdutoPorId(id);
@@ -121,11 +133,11 @@ public class ProdutoController {
 
     @GetMapping("/filtrar")
     public String filtrarPorPreco(@RequestParam("filtro") String filtro, Model model) {
-    
+
         List<Produto> produtos = produtoService.getAll();
-    
+
         List<Produto> produtosFiltrados;
-    
+
         if ("maiorPreco".equals(filtro)) {
             produtosFiltrados = produtos.stream()
                     .sorted(Comparator.comparingDouble(Produto::getValor).reversed())
@@ -137,9 +149,9 @@ public class ProdutoController {
         } else {
             produtosFiltrados = produtos;
         }
-    
+
         model.addAttribute("listaProdutos", produtosFiltrados);
         return "produto/fragment";
     }
-    
+
 }
