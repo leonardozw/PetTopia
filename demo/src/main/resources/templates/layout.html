@@ -21,27 +21,28 @@
         </ul>
         <div class="col-md-3">
           <div class="d-flex justify-content-end">
-              <div class="ms-2 me-2">
-                  <a href="#" class="btn btn-outline-dark">
-                      <i class="bi-cart-fill me-1"></i>
-                      Carrinho
-                      <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                  </a>
-              </div>
-              <div class="dropdown">
-                  <button class="btn btn-outline-dark dropdown-toggle" type="button" id="contaDropdown"
-                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Conta
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="contaDropdown">
-                      <li><a class="dropdown-item" href="#">Criar Conta</a></li>
-                      <li><a class="dropdown-item" href="#">Perfil</a></li>
-                      <li><a class="dropdown-item" href="#">Opções</a></li>
-                      <li><a class="dropdown-item" href="#">Sair</a></li>
-                  </ul>
-              </div>
+            <div class="ms-2 me-2">
+              <a href="#" class="btn btn-outline-dark">
+                <i class="bi-cart-fill me-1"></i>
+                Carrinho
+                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+              </a>
+            </div>
+            <div class="dropdown">
+
+              <button class="btn btn-outline-dark dropdown-toggle" type="button" id="contaDropdown"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span sec:authentication="principal.username">Conta</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="contaDropdown">
+                <li><a class="dropdown-item" href="#">Criar Conta</a></li>
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="#">Opções</a></li>
+                <li><a class="dropdown-item" href="#">Sair</a></li>
+              </ul>
+            </div>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   </nav>
