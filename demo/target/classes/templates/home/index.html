@@ -75,7 +75,7 @@
                                     id="top-search">Search</button>
                             </div>
                         </div>
-                        <div id="productsContainer" class="row">
+                        <!-- <div id="productsContainer" class="row">
                             <div class="col-lg-3 col-md-6 col-sm-6" th:each="produto : ${listaProdutos}">
                                 <div class="card">
                                     <img th:src="@{'/produto/image/'+ ${produto.id}}" class="card-img-top"
@@ -88,21 +88,25 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <div id="productsContainer" class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6" th:each="produto : ${listaProdutos}">
+                              <div class="card position-relative">
+                                <img th:src="@{'/produto/image/'+ ${produto.id}}" class="card-img-top"
+                                  alt="Imagem do produto" style="object-fit: cover; height: 200px;">
+                                <div class="card-body">
+                                  <h5 class="card-title" th:text="${produto.nome}"></h5>
+                                  <p class="card-text" th:text="${produto.descricao}"></p>
+                                  <p class="card-text">Preço: R$ <span th:text="${produto.valor}"></span></p>
+                                  <a th:href="@{'/produto/detalhes/' + ${produto.id}}" class="btn btn-custom">Detalhes</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <footer class="py-3 my-4">
-                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link active px-2 text-muted">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Produtos</a></li>
-                </ul>
-                <p class="text-center text-muted">&copy; 2023 Pettopia, Inc</p>
-            </footer>
-        </div>
-
         <div th:include="layout :: footer">(footer)</div>
         <script th:src="@{/script.js}"></script>
 </body>

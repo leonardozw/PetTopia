@@ -12,4 +12,6 @@ public interface ProdutoService {
     List<Produto> pesquisarProdutos(String pesquisa);
 
     void delete(long id);
+
+    Produto buscarProdutoPorId(Long id);
 }

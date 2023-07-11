@@ -1,6 +1,8 @@
 package com.pettopia.demo.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +34,16 @@ public class ProdutoServiceImpl
     @Override
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Produto buscarProdutoPorId(Long id) {
+        Optional<Produto> optionalProduto = repository.findById(id);
+        
+        if (optionalProduto.isPresent()) {
+            return optionalProduto.get();
+        } else {
+            throw new NoSuchElementException("Produto não encontrado");
+        }
     }
 }

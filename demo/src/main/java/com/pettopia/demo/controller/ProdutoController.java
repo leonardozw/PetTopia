@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -45,6 +44,14 @@ public class ProdutoController {
         var listaProdutos = produtoService.getAll();
         return new ModelAndView("produto/index",
                 "listaProdutos", listaProdutos);
+    }
+
+    @GetMapping("/produto/{id}")
+    public String exibirDetalhesProduto(@PathVariable("id") Long id, Model model) {
+        Produto produto = produtoService.buscarProdutoPorId(id);
+
+        model.addAttribute("produto", produto);
+        return "produto/detalhes";
     }
 
     @GetMapping("/novo")
@@ -111,33 +118,6 @@ public class ProdutoController {
             return new byte[0];
         }
     }
-
-    // @GetMapping("/filtrar")
-    // public ModelAndView filtrarPorPreco(@RequestParam("filtro") String filtro) {
-
-    // List<Produto> produtos = produtoService.getAll();
-
-    // Optional<Produto> produtoMaiorPreco =
-    // produtos.stream().max(Comparator.comparingDouble(Produto::getValor));
-
-    // double valorFiltro = produtoMaiorPreco.map(Produto::getValor).orElse(0.0);
-
-    // List<Produto> produtosFiltrados;
-
-    // if("maiorPreco".equals(filtro)){
-    // produtosFiltrados = produtoService.getAll().stream().filter(produto ->
-    // produto.getValor() >= valorFiltro).collect(Collectors.toList());
-    // }else if("menorPreco".equals(filtro)){
-    // produtosFiltrados = produtoService.getAll().stream().filter(produto ->
-    // produto.getValor() <= valorFiltro).collect(Collectors.toList());
-    // }else{
-    // produtosFiltrados = produtoService.getAll();
-    // }
-
-    // ModelAndView modelAndView = new ModelAndView("home/index");
-    // modelAndView.addObject("listaProdutos", produtosFiltrados);
-    // return modelAndView;
-    // }
 
     @GetMapping("/filtrar")
     public String filtrarPorPreco(@RequestParam("filtro") String filtro, Model model) {
