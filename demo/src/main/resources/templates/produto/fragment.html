@@ -1,13 +1,15 @@
 <div id="productsContainer" class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6" th:each="produto : ${listaProdutos}">
-        <div class="card">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12" th:each="produto : ${listaProdutos}">
+        <div class="card position-relative" th:id="'productCard-' + ${produto.id}">
             <img th:src="@{'/produto/image/'+ ${produto.id}}" class="card-img-top"
-                alt="Imagem do produto" style="object-fit: cover; height: 200px;">
+                alt="Imagem do produto">
             <div class="card-body">
                 <h5 class="card-title" th:text="${produto.nome}"></h5>
                 <p class="card-text" th:text="${produto.descricao}"></p>
-                <p class="card-text">Preço: R$ <span th:text="${produto.valor}"></span></p>
-                <a href="#" class="btn btn-custom">Comprar</a>
+                <p class="card-text">R$ <span th:text="${produto.valor}"></span></p>
+                <div class="text-center">
+                    <a th:href="@{'/produto/detalhes/' + ${produto.id}}" class="btn btn-custom">Detalhes</a>
+                </div>
             </div>
         </div>
     </div>

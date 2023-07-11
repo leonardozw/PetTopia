@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+lang="en">
+<head th:include="layoutDetails :: htmlhead"></head>
+<body>
+    <nav th:replace="layout :: menu">(menu)</nav>
+    <div class="container mt-5 mb-5">
+        <div class="card">
+           <div class="row g-0">
+              <div class="col-md-6 border-end">
+                 <div class="d-flex flex-column justify-content-center">
+                    <div class="main_image">	<img th:src="@{'/produto/image/'+ ${produto.id}}" id="main_product_image" width="350">	</div>
+                    <div class="thumbnail_images">
+                       <ul id="thumbnail">
+                          <li><img onclick="changeImage(this)" th:src="@{'/produto/image/'+ ${produto.id}}" width="70"></li>
+                          <li><img onclick="changeImage(this)" th:src="@{'/produto/image/'+ ${produto.id}}" width="70"></li>
+                          <li><img onclick="changeImage(this)" th:src="@{'/produto/image/'+ ${produto.id}}" width="70"></li>
+                          <li><img onclick="changeImage(this)" th:src="@{'/produto/image/'+ ${produto.id}}" width="70"></li>
+                       </ul>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="p-3 right-side">
+                    <div class="d-flex justify-content-between align-items-center">
+                       <h3 th:text="${produto.nome}"></h3>
+                       <span class="heart"><i class='bx bx-heart'></i></span>	
+                    </div>
+                    <div class="mt-2 pr-3 content">
+                       <p th:text="${produto.descricao}"></p>
+                    </div>
+                    <h3 th:text="${produto.valor}"></h3>
+                    <div class="buttons d-flex flex-row mt-5 gap-3">	<button class="btn btn-outline-dark">Comprar</button><button class="btn btn-dark">Colocar no Carrinho</button></div>
+                    <a class="mt-4 mb-4 d-flex justify-content-between" href="@{/}" style="text-decoration: none;color:black;">&leftarrow; Continuar comprando</a>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+    <div th:include="layout :: footer">(footer)</div>
+</body>
+</html>

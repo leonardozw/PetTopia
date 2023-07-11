@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -45,6 +44,26 @@ public class ProdutoController {
         var listaProdutos = produtoService.getAll();
         return new ModelAndView("produto/index",
                 "listaProdutos", listaProdutos);
+    }
+
+    @GetMapping("/detalhes")
+    public ModelAndView produtoDetalhes() {
+        ;
+        return new ModelAndView("produto/detalhes");
+    }
+
+    @GetMapping("/detalhes/{id}")
+    public ModelAndView exibirDetalhesProduto(@PathVariable("id") Long id) {
+        Produto produto = produtoService.buscarProdutoPorId(id);
+        return new ModelAndView("produto/detalhes", "produto", produto);
+    }
+
+    @GetMapping("/produto/{id}")
+    public String exibirDetalhesProduto(@PathVariable("id") Long id, Model model) {
+        Produto produto = produtoService.buscarProdutoPorId(id);
+
+        model.addAttribute("produto", produto);
+        return "produto/detalhes";
     }
 
     @GetMapping("/novo")
@@ -112,40 +131,13 @@ public class ProdutoController {
         }
     }
 
-    // @GetMapping("/filtrar")
-    // public ModelAndView filtrarPorPreco(@RequestParam("filtro") String filtro) {
-
-    // List<Produto> produtos = produtoService.getAll();
-
-    // Optional<Produto> produtoMaiorPreco =
-    // produtos.stream().max(Comparator.comparingDouble(Produto::getValor));
-
-    // double valorFiltro = produtoMaiorPreco.map(Produto::getValor).orElse(0.0);
-
-    // List<Produto> produtosFiltrados;
-
-    // if("maiorPreco".equals(filtro)){
-    // produtosFiltrados = produtoService.getAll().stream().filter(produto ->
-    // produto.getValor() >= valorFiltro).collect(Collectors.toList());
-    // }else if("menorPreco".equals(filtro)){
-    // produtosFiltrados = produtoService.getAll().stream().filter(produto ->
-    // produto.getValor() <= valorFiltro).collect(Collectors.toList());
-    // }else{
-    // produtosFiltrados = produtoService.getAll();
-    // }
-
-    // ModelAndView modelAndView = new ModelAndView("home/index");
-    // modelAndView.addObject("listaProdutos", produtosFiltrados);
-    // return modelAndView;
-    // }
-
     @GetMapping("/filtrar")
     public String filtrarPorPreco(@RequestParam("filtro") String filtro, Model model) {
-    
+
         List<Produto> produtos = produtoService.getAll();
-    
+
         List<Produto> produtosFiltrados;
-    
+
         if ("maiorPreco".equals(filtro)) {
             produtosFiltrados = produtos.stream()
                     .sorted(Comparator.comparingDouble(Produto::getValor).reversed())
@@ -157,9 +149,9 @@ public class ProdutoController {
         } else {
             produtosFiltrados = produtos;
         }
-    
+
         model.addAttribute("listaProdutos", produtosFiltrados);
         return "produto/fragment";
     }
-    
+
 }

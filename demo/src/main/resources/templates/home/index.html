@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="layoutAdmin :: htmlhead"></head>
+<head th:include="layout :: htmlhead"></head>
 
 <body>
     <nav th:replace="layout :: menu">(menu)</nav>
@@ -13,79 +13,53 @@
             </div>
         </div>
     </header>
-    <div class="page-container">
-        <div class="content-wrap">
-            <div class="row">
-                <div class="col-2">
-
-                    <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                    Filtros
-                                </button>
-                                <div class="collapse show" id="home-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"
-                                                onclick="filterByHigherPrice()">Maior Preço</a></li>
-                                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"
-                                                onclick="filterByLowerPrice()">Menor Preço</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Conta
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#"
-                                                class="link-dark d-inline-flex text-decoration-none rounded">Criar
-                                                Conta</a></li>
-                                        <li><a href="#"
-                                                class="link-dark d-inline-flex text-decoration-none rounded">Perfil</a>
-                                        </li>
-                                        <li><a href="#"
-                                                class="link-dark d-inline-flex text-decoration-none rounded">Opções</a>
-                                        </li>
-                                        <li><a href="#"
-                                                class="link-dark d-inline-flex text-decoration-none rounded">Sair</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+    <div class="content-wrapper">
+        <div class="content container-fluid">
+            <div class="container mt-5 mb-5">
+                <div class="row g-1 mt-1">
+                    <div class="col-md-10">
+                        <input id="searchInput" placeholder="Search..." class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="search btn btn-dark w-100 text-uppercase text-white" id="top-search">Search</button>
                     </div>
                 </div>
-
-                <div class="col-8">
-
-                    <div class="container mt-5">
-                        <div class="row g-1 mt-1">
-                            <div class="col-md-9">
-                                <input placeholder="Search..." class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <button class="search btn btn-dark w-100 text-uppercase text-white"
-                                    id="top-search">Search</button>
-                            </div>
+                <div class="row g-1 mt-1">
+                    <div class="col-md-12">
+                      <div class="btn-group" role="group">
+                        <div class="dropdown">
+                          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Filtros
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="filterByHigherPrice()">Maior Preço</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filterByLowerPrice()">Menor Preço</a></li>
+                          </ul>
                         </div>
-                        <div id="productsContainer" class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6" th:each="produto : ${listaProdutos}">
-                                <div class="card">
-                                    <img th:src="@{'/produto/image/'+ ${produto.id}}" class="card-img-top"
-                                        alt="Imagem do produto" style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title" th:text="${produto.nome}"></h5>
-                                        <p class="card-text" th:text="${produto.descricao}"></p>
-                                        <p class="card-text">Preço: R$ <span th:text="${produto.valor}"></span></p>
-                                        <a href="#" class="btn btn-custom">Comprar</a>
-                                    </div>
+                        <div class="dropdown">
+                          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="categoriaDropdown" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Categorias
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="categoriaDropdown" th:each="categoria : ${listaCategorias}">
+                            <li><a class="dropdown-item" href="#" th:text="${categoria.nome}"></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <br>
+                <div id="productsContainer" class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12" th:each="produto : ${listaProdutos}">
+                        <div class="card position-relative" th:id="'productCard-' + ${produto.id}">
+                            <img th:src="@{'/produto/image/'+ ${produto.id}}" class="card-img-top" alt="Imagem do produto">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${produto.nome}"></h5>
+                                <p class="card-text" th:text="${produto.descricao}"></p>
+                                <p class="card-text">R$ <span th:text="${produto.valor}"></span></p>
+                                <div class="text-center">
+                                    <a th:href="@{'/produto/detalhes/' + ${produto.id}}" class="btn btn-custom">Detalhes</a>
                                 </div>
                             </div>
                         </div>
@@ -93,18 +67,9 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <footer class="py-3 my-4">
-                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link active px-2 text-muted">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Produtos</a></li>
-                </ul>
-                <p class="text-center text-muted">&copy; 2023 Pettopia, Inc</p>
-            </footer>
-        </div>
-
-        <div th:include="layout :: footer">(footer)</div>
-        <script th:src="@{/script.js}"></script>
+    </div>
+    <div th:include="layout :: footer">(footer)</div>
+    <script th:src="@{/script.js}"></script>
 </body>
 
 </html>

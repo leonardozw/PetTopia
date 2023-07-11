@@ -17,12 +17,6 @@
     font-size: 13px;
 }
 
-.buttons {
-    position: absolute;
-    left: 25%;
-    bottom: 30px;
-}
-
 .buttons button {
     margin: 0;
     margin-left: 7px;
@@ -43,19 +37,6 @@
     color: #000;
     cursor: pointer;
     padding: 10px;
-}
-
-.buttons button {
-    height: 38px;
-    margin-left: 10px;
-    text-transform: uppercase;
-    padding-right: 10px;
-    padding-left: 10px;
-    font-size: 12px;
-}
-
-.buttons button:hover {
-    background-color: #404040;
 }
 
 .page-link {
@@ -96,32 +77,10 @@
     margin-bottom: 10px;
 }
 
-
-.btn-toggle {
-    padding: .25rem .5rem;
-    font-weight: 600;
-    color: rgba(0, 0, 0, .65);
-    background-color: transparent;
-}
-
 .btn-toggle:hover,
 .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
     background-color: #dadada;
-}
-
-.btn-toggle::before {
-    width: 1.25em;
-    line-height: 0;
-    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-    transition: transform .35s ease;
-    transform-origin: .5em 50%;
-}
-
-.btn-toggle-nav a {
-    padding: .1875rem .5rem;
-    margin-top: .125rem;
-    margin-left: 1.25rem;
 }
 
 .btn-toggle-nav a:hover,
@@ -138,43 +97,85 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    margin-bottom: 20px; /* Espaçamento entre os cards */
-  }
-  
-  .card:hover {
+    margin-bottom: 20px;
+    /* Espaçamento entre os cards */
+    position: relative;
+    overflow: hidden;
+}
+
+.card-body {
+    position: relative;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.card-overlay-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card:hover .card-overlay-content {
+    opacity: 1;
+}
+
+.card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-img-top {
+}
+
+.card-img-top {
     object-fit: cover;
     height: 200px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-  }
-  
-  .card-body {
-    padding: 1.5rem; /* Espaçamento interno */
-  }
-  
-  .card-title {
+}
+
+.card-body {
+    padding: 1.5rem;
+    /* Espaçamento interno */
+}
+
+.card-title {
     font-size: 1.25rem;
     font-weight: bold;
-    margin-bottom: 0.75rem; /* Espaçamento entre o título e o texto */
-  }
-  
-  .card-text {
-    margin-bottom: 1.25rem; /* Espaçamento entre o texto e o botão */
-  }
-  
-  .btn-custom {
+    margin-bottom: 0.75rem;
+    /* Espaçamento entre o título e o texto */
+}
+
+.card-text {
+    margin-bottom: 1.25rem;
+    /* Espaçamento entre o texto e o botão */
+}
+
+.btn-custom {
+
     color: #fff;
-    background-color: #6c757d; /* Cor neutra */
+    background-color: #6c757d;
     border-color: #6c757d;
-  }
-  
-  .btn-custom:hover {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.btn-custom:hover {
     background-color: #5a6268;
     border-color: #545b62;
-  }
-  
-  
+    color: #fff;
+    transform: scale(1.1);
+}
