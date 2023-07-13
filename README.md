@@ -19,14 +19,14 @@ O projeto foi elaborado como parte da disciplina de Fábrica de Software do curs
 
 ## Telas de funcionamento
 **Login com Azure**
-![Login]()
+![Login](toReadme/5.jpeg)
 
 **Principais Telas do Admin**
-![DashBoard]()
+![DashBoard](toReadme/2.jpeg)
 
-![ControleProdutos]()
+![ControleProdutos](toReadme/3.jpeg)
 
-![ControleClientes]()
+![ControleClientes](toReadme/4.jpeg)
 
 **Tela principal do Usuario**
-![HomePage]()
+![HomePage](toReadme/1.jpeg)
