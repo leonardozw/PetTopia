@@ -8,7 +8,8 @@
             "mainClass": "com.pettopia.demo.DemoApplication",
             "projectName": "demo",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "args": "--spring.profiles.active=dev"
         }
     ]
 }
