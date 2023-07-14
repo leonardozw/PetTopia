@@ -33,4 +33,8 @@ public class CategoriaServiceImpl
     public void delete(long id) {
         repository.deleteById(id);
     }
+
+    public Categoria getById(Long categoriaId) {
+        return repository.findById(categoriaId).orElse(null);
+    }
 }

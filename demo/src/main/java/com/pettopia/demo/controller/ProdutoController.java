@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pettopia.demo.entity.Categoria;
 import com.pettopia.demo.entity.Produto;
 import com.pettopia.demo.service.CategoriaService;
 import com.pettopia.demo.service.ProdutoService;
@@ -150,6 +151,15 @@ public class ProdutoController {
             produtosFiltrados = produtos;
         }
 
+        model.addAttribute("listaProdutos", produtosFiltrados);
+        return "produto/fragment";
+    }
+
+    @GetMapping("/filtrar/categoria")
+    public String filtrarPorCategoria(@RequestParam("categoria") Long categoriaId, Model model) {
+        Categoria categoria = categoriaService.getById(categoriaId);
+        List<Produto> produtosFiltrados = produtoService.getByCategoria(categoria);
+    
         model.addAttribute("listaProdutos", produtosFiltrados);
         return "produto/fragment";
     }

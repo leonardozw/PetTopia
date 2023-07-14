@@ -12,4 +12,6 @@ public interface CategoriaService {
     List<Categoria> pesquisarCategorias(String pesquisa);
 
     void delete(long id);
+
+    Categoria getById(Long categoriaId);
 }

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pettopia.demo.entity.Categoria;
 import com.pettopia.demo.entity.Produto;
 import com.pettopia.demo.repository.ProdutoRepository;
 import com.pettopia.demo.service.ProdutoService;
@@ -46,4 +47,9 @@ public class ProdutoServiceImpl
             throw new NoSuchElementException("Produto não encontrado");
         }
     }
+
+    public List<Produto> getByCategoria(Categoria categoria) {
+    return repository.findByCategoria(categoria);
+}
+
 }

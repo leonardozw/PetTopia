@@ -9,4 +9,5 @@ import com.pettopia.demo.entity.Categoria;
 public interface CategoriaRepository 
     extends JpaRepository<Categoria, Long>{
         List<Categoria> findByNomeContainingIgnoreCase(String nome);
+        
 }

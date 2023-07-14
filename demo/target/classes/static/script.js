@@ -160,6 +160,22 @@
         });
     }
 
+    function filterByCategoria(element) { 
+        var categoriaId = $(element).data('categoria')
+        $.ajax({
+            url: '/produto/filtrar/categoria',
+            type: 'GET',
+            data: { categoria: categoriaId },
+            success: function (response) {
+                console.log(response)
+                $('#productsContainer').html(response); 
+            },
+            error: function (xhr, status, error) {
+                
+            }
+        });
+    }
+
     function changeImage(element) {
         var main_prodcut_image = document.getElementById('main_product_image');
         main_prodcut_image.src = element.src;
@@ -171,4 +187,5 @@
     window.filtrarProdutos = filtrarProdutos;
     window.filterByHigherPrice = filterByHigherPrice;
     window.filterByLowerPrice = filterByLowerPrice;
+    window.filterByCategoria = filterByCategoria;
 })();
