@@ -130,32 +130,31 @@
     }
 
     function filterByHigherPrice() {
-        var filtro = "maiorPreco"; // Defina o filtro para maior preço
+        var filtro = "maiorPreco"; 
         $.ajax({
-            url: '/produto/filtrar',
+            url: '/home/filtrar',
             type: 'GET',
             data: { filtro: filtro },
             success: function (response) {
-                $('#productsContainer').html(response); // Atualize o container de produtos com a resposta
+                $('#productsContainer').html(response); 
             },
             error: function (xhr, status, error) {
-                // Manipule os erros aqui, se necessário
+                
             }
         });
     }
 
     function filterByLowerPrice() {
-        var filtro = "menorPreco"; // Defina o filtro para menor preço
+        var filtro = "menorPreco";
         $.ajax({
-            url: '/produto/filtrar',
+            url: '/home/filtrar',
             type: 'GET',
             data: { filtro: filtro },
             success: function (response) {
-                console.log(response)
-                $('#productsContainer').html(response); // Atualize o container de produtos com a resposta
+                $('#productsContainer').html(response); 
             },
             error: function (xhr, status, error) {
-                // Manipule os erros aqui, se necessário
+                
             }
         });
     }
@@ -163,7 +162,7 @@
     function filterByCategoria(element) { 
         var categoriaId = $(element).data('categoria')
         $.ajax({
-            url: '/produto/filtrar/categoria',
+            url: '/home/filtrar/categoria',
             type: 'GET',
             data: { categoria: categoriaId },
             success: function (response) {
@@ -176,9 +175,19 @@
         });
     }
 
-    function changeImage(element) {
-        var main_prodcut_image = document.getElementById('main_product_image');
-        main_prodcut_image.src = element.src;
+    function performSearch() {
+        var searchValue = $('#searchInput').val();
+        $.ajax({
+            url: '/home/pesquisar',
+            type: 'GET',
+            data: { search: searchValue },
+            success: function(response) {
+                $('#productsContainer').html(response);
+            },
+            error: function(xhr, status, error) {
+            
+            }
+        });
     }
 
     window.filtrarPet = filtrarPet;
@@ -188,4 +197,5 @@
     window.filterByHigherPrice = filterByHigherPrice;
     window.filterByLowerPrice = filterByLowerPrice;
     window.filterByCategoria = filterByCategoria;
+    window.performSearch = performSearch;
 })();

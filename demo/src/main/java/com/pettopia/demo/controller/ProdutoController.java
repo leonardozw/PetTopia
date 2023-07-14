@@ -3,10 +3,8 @@ package com.pettopia.demo.controller;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pettopia.demo.entity.Categoria;
 import com.pettopia.demo.entity.Produto;
 import com.pettopia.demo.service.CategoriaService;
 import com.pettopia.demo.service.ProdutoService;
@@ -131,37 +128,4 @@ public class ProdutoController {
             return new byte[0];
         }
     }
-
-    @GetMapping("/filtrar")
-    public String filtrarPorPreco(@RequestParam("filtro") String filtro, Model model) {
-
-        List<Produto> produtos = produtoService.getAll();
-
-        List<Produto> produtosFiltrados;
-
-        if ("maiorPreco".equals(filtro)) {
-            produtosFiltrados = produtos.stream()
-                    .sorted(Comparator.comparingDouble(Produto::getValor).reversed())
-                    .collect(Collectors.toList());
-        } else if ("menorPreco".equals(filtro)) {
-            produtosFiltrados = produtos.stream()
-                    .sorted(Comparator.comparingDouble(Produto::getValor))
-                    .collect(Collectors.toList());
-        } else {
-            produtosFiltrados = produtos;
-        }
-
-        model.addAttribute("listaProdutos", produtosFiltrados);
-        return "produto/fragment";
-    }
-
-    @GetMapping("/filtrar/categoria")
-    public String filtrarPorCategoria(@RequestParam("categoria") Long categoriaId, Model model) {
-        Categoria categoria = categoriaService.getById(categoriaId);
-        List<Produto> produtosFiltrados = produtoService.getByCategoria(categoria);
-    
-        model.addAttribute("listaProdutos", produtosFiltrados);
-        return "produto/fragment";
-    }
-
 }
